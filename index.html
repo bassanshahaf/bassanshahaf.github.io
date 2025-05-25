@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 40px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .academic-title {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #2c3e50;
+            font-size: 1.5em;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        section {
+            margin-bottom: 50px;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .publications-list {
+            list-style: none;
+        }
+
+        .publication-item {
+            margin-bottom: 2em;
+        }
+
+        .publication-title {
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .publication-title:hover {
+            color: #3498db;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            color: #666;
+            margin: 0.3em 0;
+        }
+
+        .publication-venue {
+            color: #444;
+        }
+
+        .publication-year {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .publication-links {
+            margin-top: 0.5em;
+        }
+
+        .publication-links a {
+            text-decoration: none;
+            color: #3498db;
+            margin-right: 1em;
+            font-size: 0.9em;
+        }
+
+        .publication-links a:hover {
+            text-decoration: underline;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 1.5em;
+        }
+
+        .news-item {
+            display: table-row;
+        }
+
+        .news-date {
+            display: table-cell;
+            width: 180px;
+            color: #666;
+            font-weight: 500;
+            padding-right: 2em;
+            vertical-align: top;
+            white-space: nowrap;
+        }
+
+        .news-content {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .news-content a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .news-content a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .news-list {
+                display: block;
+            }
+            
+            .news-item {
+                display: block;
+                margin-bottom: 1em;
+            }
+            
+            .news-date {
+                display: block;
+                width: auto;
+                margin-bottom: 0.3em;
+            }
+            
+            .news-content {
+                display: block;
+                padding-left: 1em;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+    <script>
+        // Data embedded directly in the page
+        const publicationsData = {
+            "publications": [
+                {
+                    "title": "Title of Your First Paper: An Amazing Discovery in Your Field",
+                    "authors": "Your Name, Co-author One, Co-author Two",
+                    "year": "2024",
+                    "venue": "Conference/Journal Name",
+                    "links": [
+                        {
+                            "text": "PDF",
+                            "url": "#"
+                        },
+                        {
+                            "text": "arXiv",
+                            "url": "#"
+                        },
+                        {
+                            "text": "Code",
+                            "url": "#"
+                        },
+                        {
+                            "text": "Project Page",
+                            "url": "#"
+                        }
+                    ]
+                },
+                {
+                    "title": "Your Second Paper: Another Groundbreaking Research",
+                    "authors": "Your Name, Different Co-author, Another Co-author",
+                    "year": "2023",
+                    "venue": "Different Conference/Journal",
+                    "links": [
+                        {
+                            "text": "PDF",
+                            "url": "#"
+                        },
+                        {
+                            "text": "arXiv",
+                            "url": "#"
+                        },
+                        {
+                            "text": "Code",
+                            "url": "#"
+                        }
+                    ]
+                },
+                {
+                    "title": "A Journal Paper with Long-term Impact",
+                    "authors": "Your Name, Senior Author",
+                    "year": "2023",
+                    "venue": "Prestigious Journal Name",
+                    "links": [
+                        {
+                            "text": "PDF",
+                            "url": "#"
+                        },
+                        {
+                            "text": "Supplementary",
+                            "url": "#"
+                        },
+                        {
+                            "text": "Dataset",
+                            "url": "#"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        const newsData = {
+            "news": [
+                {
+                    "date": "March 2024",
+                    "content": "Paper \"Title of Paper\" accepted to Conference 2024!"
+                },
+                {
+                    "date": "February 2024",
+                    "content": "Gave an invited talk at University Name about Topic."
+                },
+                {
+                    "date": "January 2024",
+                    "content": "Our code for Project Name is now available on GitHub",
+                    "link": {
+                        "text": "GitHub",
+                        "url": "#"
+                    }
+                },
+                {
+                    "date": "December 2023",
+                    "content": "Presented our work on Topic at Workshop Name 2023."
+                }
+            ]
+        };
+
+        // Function to create publication HTML
+        function createPublicationHTML(pub) {
+            const linksHTML = pub.links.map(link => 
+                `<a href="${link.url}" target="_blank">[${link.text}]</a>`
+            ).join(' ');
+
+            return `
+                <li class="publication-item">
+                    <a href="#" class="publication-title">${pub.title}</a>
+                    <div class="publication-authors">${pub.authors}</div>
+                    <div class="publication-venue">
+                        <span class="publication-year">${pub.year}</span> | 
+                        ${pub.venue}
+                    </div>
+                    <div class="publication-links">
+                        ${linksHTML}
+                    </div>
+                </li>
+            `;
+        }
+
+        // Function to create news HTML
+        function createNewsHTML(newsItem) {
+            let content = newsItem.content;
+            if (newsItem.link) {
+                content = content.replace(newsItem.link.text, 
+                    `<a href="${newsItem.link.url}" target="_blank">${newsItem.link.text}</a>`);
+            }
+            
+            return `
+                <li class="news-item">
+                    <span class="news-date">${newsItem.date}</span>
+                    <div class="news-content">${content}</div>
+                </li>
+            `;
+        }
+
+        // Load and display data when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            // Display publications
+            const publicationsList = document.querySelector('#publications-list');
+            publicationsList.innerHTML = publicationsData.publications
+                .map(createPublicationHTML)
+                .join('');
+
+            // Display news
+            const newsList = document.querySelector('#news-list');
+            newsList.innerHTML = newsData.news
+                .map(createNewsHTML)
+                .join('');
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#publications">Publications</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <img src="profile_pic.png" alt="Shahaf Bassan" class="profile-image">
+        <h1>Shahaf Bassan</h1>
+        <p class="academic-title">PhD candidate at Hebrew University of Jerusalem</p>
+        <div class="social-links">
+            <a href="mailto:your.email@domain.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/your-handle" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://scholar.google.com/citations?user=your-id" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://www.semanticscholar.org/author/your-id" target="_blank" title="Semantic Scholar"><i class="fas fa-book-reader"></i></a>
+            <a href="https://arxiv.org/a/your-id.html" target="_blank" title="arXiv"><i class="fas fa-archive"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="content">
+                <!-- About me content will go here -->
+                <p>Content coming soon...</p>
+            </div>
+        </section>
+
+        <section id="news">
+            <h2>News</h2>
+            <div class="content">
+                <ul class="news-list" id="news-list">
+                    <!-- News items will be loaded from news.json -->
+                </ul>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="content">
+                <ul class="publications-list" id="publications-list">
+                    <!-- Publications will be loaded from publications.json -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
