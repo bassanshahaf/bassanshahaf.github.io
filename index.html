@@ -226,6 +226,8 @@
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                max-width: 100%;  /* <-- add this */
+                overflow-x: hidden; /* <-- add this */
             }
 
             header {
@@ -243,9 +245,6 @@
 
             .social-links {
                 flex-wrap: wrap;
-            }
-            #about {
-                padding-top: 100px;
             }
         }
     </style>
